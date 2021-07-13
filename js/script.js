@@ -88,7 +88,7 @@ const displayData = (data) => {
   const listPlace = document.getElementById("todo");
 
   if (document.getElementById("todo").children.length >= 1) {
-    console.log(document.getElementById("todo").children.length);
+    // console.log(document.getElementById("todo").children.length);
     const div = document.getElementById("todo");
     div.children[0].remove();
   }
