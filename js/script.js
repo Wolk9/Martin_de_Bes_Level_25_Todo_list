@@ -37,13 +37,19 @@ const inputForm = () => {
   });
 };
 
+// hier ben ik gebleven!
+
 async function createData(input) {
+  const content = {
+    "'description'": input,
+    "'done'": false
+  }.json;
   const response = await fetch(baseUrl + id, {
     method: "POST",
-    body: "'${data}'",
     headers: {
       "Content-Type": "application/json"
-    }
+    },
+    body: content
   });
   const json = await response.json();
   console.log(response);
@@ -80,22 +86,34 @@ async function deleteData(id) {
 const displayData = (data) => {
   console.log(data, data.length);
   const listPlace = document.getElementById("todo");
-  const div1 = document.createElement("div");
+
+  if (document.getElementById("todo").children.length >= 1) {
+    console.log(document.getElementById("todo").children.length);
+    const div = document.getElementById("todo");
+    div.children[0].remove();
+  }
+  console.log(document.getElementById("todo").children.length);
+  const div = document.createElement("div");
   const table = document.createElement("table");
-  div1.innerHTML = "";
-  table.innerHTML = "";
-  listPlace.appendChild(div1);
-  div1.appendChild(table);
+  div.setAttribute("id", "tablediv");
+  table.setAttribute("id", "table");
+  listPlace.appendChild(div);
+  div.appendChild(table);
 
   data.forEach((item) => {
+    const div = document.getElementById("todo");
+    const table = document.getElementById("tablediv");
     const tableRow = document.createElement("tr");
     const idValue = item._id;
     const createDoneCell = document.createElement("td");
     const createDescriptionCell = document.createElement("td");
     const createDeleteCell = document.createElement("td");
     const doneCell = tableRow.appendChild(createDoneCell);
+    doneCell.setAttribute("width", "80px");
     const descriptionCell = tableRow.appendChild(createDescriptionCell);
+    descriptionCell.setAttribute("width", "400px");
     const deleteCell = tableRow.appendChild(createDeleteCell);
+
     const createTrashCanButton = document.createElement("button");
     createTrashCanButton.classList.add("btn");
     createTrashCanButton.addEventListener("mousedown", function () {

@@ -67,17 +67,6 @@ header {
   margin: 0px;
 }
 
-section {
-  padding: 10px 25px;
-  text-align: center;
-  margin-top: 10%;
-}
-
-section > div {
-  flex: 0 1 auto;
-  align-self: flex-start;
-}
-
 aside {
   display: grid;
   position: absolute;
@@ -117,11 +106,27 @@ footer > p {
   color: whitesmoke;
 }
 
-table {
+section {
+  padding: 10px 25px;
+  text-align: center;
+  margin-top: 10%;
+}
+
+section > div#inputField {
+  display: inline;
+  flex: 0 1 auto;
+  align-self: center;
+}
+
+section > div#todo {
+  margin-top: 20px;
   display: inline-table;
   color: whitesmoke;
   text-align: center;
   align-self: center;
+}
+
+section > div {
 }
 
 table > tr > th {
@@ -136,7 +141,9 @@ td {
 }
 
 tr:nth-child(even) {
-  background: rgb(55, 55, 99);
+  background: rgb(115, 115, 126);
+  border-bottom: 1px;
+  border-bottom-color: black;
 }
 
 table img {
