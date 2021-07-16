@@ -1,5 +1,6 @@
 async function createData(input) {
-  //   console.log("createData");
+  // create record function
+  //   console.log("createData", input);
   //   console.log(input);
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -22,11 +23,13 @@ async function createData(input) {
     .then((response) => response.text())
     .then((result) => {
       //   console.log(result);
+      catchData(result);
     });
   // .catch((error) => console.log("error", error));
 }
 
 async function catchData() {
+  // get the records function
   //   console.log("catchData");
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -47,7 +50,8 @@ async function catchData() {
 }
 
 async function deleteData(id) {
-  //   console.log("deleteData");
+  // delete 1 record function
+  console.log("deleteData", id);
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -70,13 +74,21 @@ async function deleteData(id) {
 }
 
 async function editData(input, done, id) {
+  // edit record function (both done or descripion)
+  //   console.log("editData", input, done, id);
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-  var raw = JSON.stringify({
-    description: input,
-    done: done
-  });
+  if (input != "") {
+    var raw = JSON.stringify({
+      description: input,
+      done: "false"
+    });
+  } else {
+    var raw = JSON.stringify({
+      done: done
+    });
+  }
 
   var requestOptions = {
     method: "PUT",

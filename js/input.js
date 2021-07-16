@@ -15,7 +15,7 @@ const inputField = () => {
       console.log(event.key + " is geen Enter");
     } else {
       const input = document.querySelector("input").value;
-      console.log("Create data please per keyboard Enter");
+      //   console.log("Create data please per keyboard Enter");
       createData(input);
       // catchData();
     }
@@ -32,7 +32,7 @@ const inputField = () => {
 
   submitButton.addEventListener("click", function () {
     const input = document.querySelector("input").value;
-    console.log("Create data please per mouseclick");
+    // console.log("Create data please per mouseclick");
     createData(input);
     //   catchData();
   });
